@@ -74,8 +74,6 @@ func init() {
 func showStatus(c *ecobee.Client, ts *ecobee.ThermostatSummary, t *ecobee.Thermostat) {
 	running := formatEquipmentStatus(ts)
 
-	fmt.Println("kyle", t.Settings.HvacMode)
-
 	fmt.Printf("Current Settings (%s): %.1f - %.1f.  Fan: %s%s\n CurrentMode: %s\n",
 		strings.Title(t.Program.CurrentClimateRef),
 		float64(t.Runtime.DesiredHeat)/10.0,
