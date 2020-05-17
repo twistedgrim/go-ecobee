@@ -148,7 +148,7 @@ type Thermostat struct {
 	ThermostatTime string `json:"thermostatTime"`
 	UtcTime        string `json:"utcTime"`
 	//Alerts         []Alert  `json:"alerts"`
-	//Settings       Settings `json:"settings"`
+	Settings       Settings `json:"settings"`
 	Runtime         Runtime         `json:"runtime"`
 	ExtendedRuntime ExtendedRuntime `json:"extendedRuntime"`
 	/// ...
@@ -157,6 +157,10 @@ type Thermostat struct {
 	/// ...
 	RemoteSensors []RemoteSensor `json:"remoteSensors"`
 	Weather       Weather        `json:"weather"`
+}
+
+type Settings struct {
+	HvacMode	string `json:"hvacMode"`
 }
 
 type Runtime struct {

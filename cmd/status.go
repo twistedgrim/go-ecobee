@@ -18,8 +18,8 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/billykwooten/go-ecobee/ecobee"
 	"github.com/golang/glog"
-	"github.com/rspier/go-ecobee/ecobee"
 	"github.com/spf13/cobra"
 )
 
@@ -74,27 +74,34 @@ func init() {
 func showStatus(c *ecobee.Client, ts *ecobee.ThermostatSummary, t *ecobee.Thermostat) {
 	running := formatEquipmentStatus(ts)
 
-	fmt.Printf("Current Settings (%s): %.1f - %.1f.  Fan: %s%s\n",
+	fmt.Println("kyle", t.Settings.HvacMode)
+
+	fmt.Printf("Current Settings (%s): %.1f - %.1f.  Fan: %s%s\n CurrentMode: %s\n",
 		strings.Title(t.Program.CurrentClimateRef),
 		float64(t.Runtime.DesiredHeat)/10.0,
 		float64(t.Runtime.DesiredCool)/10.0,
 		t.Runtime.DesiredFanMode,
-		running)
+		running,
+		t.Settings.HvacMode,
+	)
 
-	ev := t.Events[0]
-	if ev.Running {
-		switch ev.Type {
-		case "hold":
-			fmt.Printf("Holding at %.1f - %.1f (Fan: %s) until %s %s\n",
-				float64(ev.HeatHoldTemp)/10.0,
-				float64(ev.CoolHoldTemp)/10.0,
-				ev.Fan,
-				ev.EndDate,
-				ev.EndTime)
-		case "vacation":
-			fmt.Printf("On vacation until %s %s\n",
-				ev.EndDate, ev.EndTime)
+	if len(t.Events) > 0 {
+		ev := t.Events[0]
+		if ev.Running {
+			switch ev.Type {
+			case "hold":
+				fmt.Printf("Holding at %.1f - %.1f (Fan: %s) until %s %s\n",
+					float64(ev.HeatHoldTemp)/10.0,
+					float64(ev.CoolHoldTemp)/10.0,
+					ev.Fan,
+					ev.EndDate,
+					ev.EndTime)
+			case "vacation":
+				fmt.Printf("On vacation until %s %s\n",
+					ev.EndDate, ev.EndTime)
+			}
 		}
+
 	}
 
 	fmt.Printf("Temperature: %.1f\n", float64(t.Runtime.ActualTemperature)/10.0)
