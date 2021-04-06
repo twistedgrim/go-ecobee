@@ -78,7 +78,7 @@ func (c *Client) GetThermostat(thermostatID string) (*Thermostat, error) {
 		IncludeProgram:         true,
 		IncludeRuntime:         true,
 		IncludeExtendedRuntime: false,
-		IncludeSettings:        true,
+		IncludeSettings:        false,
 		IncludeSensors:         true,
 		IncludeWeather:         false,
 	}
