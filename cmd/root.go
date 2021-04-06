@@ -15,12 +15,13 @@ package cmd
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"path"
 
 	"github.com/golang/glog"
 	homedir "github.com/mitchellh/go-homedir"
-	"github.com/billykwooten/go-ecobee/ecobee"
+	"github.com/rspier/go-ecobee/ecobee"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -68,9 +69,15 @@ func init() {
 	RootCmd.PersistentFlags().StringP("appid", "i", "", "app id")
 	RootCmd.PersistentFlags().StringP("authcache", "", "", "auth cache file")
 
-	viper.BindPFlag("thermostat", RootCmd.PersistentFlags().Lookup("thermostat"))
-	viper.BindPFlag("appid", RootCmd.PersistentFlags().Lookup("appid"))
-	viper.BindPFlag("authcache", RootCmd.PersistentFlags().Lookup("authcache"))
+	// This is a little messy... is there a nicer way to do this?
+	ck := func(err error) {
+		if err != nil {
+			log.Fatal("unexpected error setting up flag parsing!")
+		}
+	}
+	ck(viper.BindPFlag("thermostat", RootCmd.PersistentFlags().Lookup("thermostat")))
+	ck(viper.BindPFlag("appid", RootCmd.PersistentFlags().Lookup("appid")))
+	ck(viper.BindPFlag("authcache", RootCmd.PersistentFlags().Lookup("authcache")))
 }
 
 // initConfig reads in config file and ENV variables if set.
