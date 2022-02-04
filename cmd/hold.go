@@ -21,8 +21,8 @@ import (
 	"time"
 
 	"github.com/golang/glog"
-	"github.com/billykwooten/go-ecobee/ecobee"
 	"github.com/spf13/cobra"
+	"github.com/twistedgrim/go-ecobee/ecobee"
 )
 
 var (

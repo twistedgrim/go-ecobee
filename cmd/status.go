@@ -18,9 +18,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/billykwooten/go-ecobee/ecobee"
 	"github.com/golang/glog"
 	"github.com/spf13/cobra"
+	"github.com/twistedgrim/go-ecobee/ecobee"
 )
 
 // output format

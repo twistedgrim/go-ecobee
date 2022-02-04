@@ -1,5 +1,7 @@
 # go-ecobee
 
+This is a fork of https://github.com/billykwooten/go-ecobee meant for learning and updates
+
 A go library and simple tools for accessing the
 [Ecobee Thermostat API](https://www.ecobee.com/home/developer/api/documentation/v1).
 
@@ -11,7 +13,7 @@ serves as it's primary example.
 ### Install
 
 ```
-go install -u github.com/rspier/go-ecobee`
+go install -u github.com/twistedgrim/go-ecobee`
 ```
 
 ### Build

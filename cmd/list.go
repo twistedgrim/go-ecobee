@@ -17,8 +17,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/billykwooten/go-ecobee/ecobee"
 	"github.com/spf13/cobra"
+	"github.com/twistedgrim/go-ecobee/ecobee"
 )
 
 // listCmd represents the list command

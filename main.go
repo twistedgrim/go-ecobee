@@ -16,8 +16,8 @@ package main
 import (
 	goflag "flag"
 
-	"github.com/billykwooten/go-ecobee/cmd"
 	flag "github.com/spf13/pflag"
+	"github.com/twistedgrim/go-ecobee/cmd"
 )
 
 func main() {

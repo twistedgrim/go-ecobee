@@ -18,8 +18,8 @@ import (
 	"strconv"
 
 	"github.com/golang/glog"
-	"github.com/billykwooten/go-ecobee/ecobee"
 	"github.com/spf13/cobra"
+	"github.com/twistedgrim/go-ecobee/ecobee"
 
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promauto"
